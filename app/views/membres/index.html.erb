@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion à la Bibliothèque</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <h2>Connexion à la Bibliothèque</h2>
+      <form id="login-form">
+        <div class="input-container">
+          <label for="username">Nom d'utilisateur</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-container">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Se connecter</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    const loginForm = document.getElementById('login-form');
+
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      // Envoyez les informations d'authentification au serveur Ruby ici
+      // Vous devrez gérer la logique d'authentification côté serveur en Ruby
+    });
+  </script>
+</body>
+</html>

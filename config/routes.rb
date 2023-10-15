@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  get 'books/edit'
+  get 'books/show'
+  get 'books/create'
+  get 'books/delete'
+  get 'books/update'
+  get 'books/index'
+  get 'books/new'
+  get 'retours/show'
+  get 'retours/create'
+  get 'retours/delete'
+  get 'retours/update'
+ # get 'home/index'
+  root "books#index"
   get "show" => 'livres#show'
-  get "index" => 'books#index'
+  #get "index" => 'books#index'
   get 'membres/show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "index" => "books#index"

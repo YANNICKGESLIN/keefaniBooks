@@ -1,11 +1,12 @@
-# app/views/books/index.html.erb
+<h1>Books#index</h1>
+<p>Find me in app/views/books/index.html.erb</p>
 
 <h1>Liste des livres</h1>
 
 <ul>
   <% @books.each do |book| %>
     <li>
-      <%= book.title %> par <%= book.author %>
+      <%= book.titre %> par <%= book.auteur %>
     </li>
   <% end %>
 </ul>

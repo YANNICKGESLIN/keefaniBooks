@@ -1,6 +1,5 @@
 # Importe les bibliothèques nécessaires
 require 'sqlite3'
-require 'yaml'
 
 class Membre < ApplicationRecord
   # Définition des attributs du modèle
@@ -15,17 +14,17 @@ end
 # Ouvre la base de données
 db = SQLite3::Database.new('biblio.sqlite3')
 
-# Crée un utilisateur
+# Crée un membre
 membre = {
   nom: 'Nom du membre',
   email: 'email@example.com',
-  password: 'password'
+  password: 'motdepasse'
 }
-membre = Membre.create(nom: 'Nom du Membre', email: 'email@example.com', password: 'motdepasse')
 
+# Utilise une requête préparée pour insérer le membre dans la table
+db.execute('INSERT INTO membres (nom, email, password) VALUES (?, ?, ?)', [membre[:nom], membre[:email], membre[:password]])
 
-# Insère l'utilisateur dans la base de données
-db.execute('INSERT INTO Membres (nom, email, password) VALUES (?, ?, ?)', [membre[:nom], membre[:email], membre[:password]])
+# Récupère l'ID du membre créé
 membre_id = db.last_insert_row_id
 
 # Ferme la base de données

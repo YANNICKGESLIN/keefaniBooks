@@ -1,29 +1,99 @@
-<h1>Books#create</h1>
-<p>Find me in app/views/books/create.html.erb</p>
 
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styless.css">
-
-    <title>Livres</title>
-  </head>
-<body>
-  <div class="container">
+  <!-- <div class="container">
     <h1>Bibliothèque de Livres</h1>
     <div class="book-form">
-      <input type="text" id="book-title" placeholder="Titre du livre">
-      <input type="text" id="book-author" placeholder="Auteur du livre">
+      <input type="number" id="book-id" name="id" placeholder="ID">
+      <input type="text" id="book-auteur" placeholder="Auteur du livre">
+      <input type="text" id="book-titre" placeholder="Titre du livre">
+      <input type="text" id="book-genre" placeholder="Genre du livre">
+      <input type="text" id="book-annee_publication" placeholder="Annee de publication du livre">
+      <input type="text" id="book-exemplaires_disponibles" placeholder="Exemplaires disponibles du livre">
       <button id="add-book">Ajouter</button>
     </div>
     <div class="book-list">
       <ul id="book-list">
-        <!-- La liste des livres sera générée ici -->
+         La liste des livres sera générée ici
       </ul>
     </div>
+  </div> -->
+
+<h1>Create Book</h1>
+
+<%= form_for(@book) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :titre %>
+    <%= f.text_field :titre, class: 'form-control' %>
   </div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+  <div class="form-group">
+    <%= f.label :auteur %>
+    <%= f.text_field :auteur, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :genre %>
+    <%= f.text_field :genre, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :annee_publication %>
+    <%= f.number_field :annee_publication, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :exemplaires_disponibles %>
+    <%= f.number_field :exemplaires_disponibles, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :isbn %>
+    <%= f.number_field :isbn, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: 'form-control' %>
+
+
+  <div class="form-group">
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<% if @book.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<!-- <form action="/books" method="post">
+  Other form fields -->
+  <!-- <input type="number" name="book[id]" />
+  <input type="text" name="book[titre]"
+  <input type="text" name="book[auteur]" />
+  <input type="text" name="book[genre]" />
+  <input type="number" name="book[annee_publication]" />
+  <input type="number" name="book[exemplaires_disponibles]"
+   />
+   <input type="number" name="book[isbn]"
+  <input type="file" name="book[image]" />
+  Include input fields for other book attributes -->
+  <!-- <input type="submit" value="Create Book" />
+</form>  -->
+
+
+<% if @book.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

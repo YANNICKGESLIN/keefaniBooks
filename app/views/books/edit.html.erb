@@ -1,2 +1,90 @@
-<h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+ <section id="about">
+        <div class="container">
+
+            <div class="container my-5">
+                <div class="container my-5 row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-6 card">
+                        <h4 >Modification des données d'un nouveau Livre</h4>
+
+
+
+
+<h1>Modifier un livre</h1>
+
+<form method="POST" action="{{route('update.books', @book.id)}}" enctype="multipart/form-data">
+
+    @csrf
+    @method('put')
+
+    <div class="mb-3">
+        <label for="titre" class="form-label">Titre</label>
+        <input type="text" name="titre" class="form-control" id="titre" value="{{@book.titre}}" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="genre" class="form-label">Genre</label>
+        <input type="text" name="genre" class="form-control" id="genre" value="{{@book.genre}}" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="annee_publication" class="form-label">Année de publication</label>
+        <input type="number" name="annee_publication" class="form-control" id="annee_publication" value="{{@book.annee_publication}}" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="exemplaires_disponibles" class="form-label">Exemplaires disponibles</label>
+        <input type="number" name="exemplaires_disponibles" class="form-control" id="exemplaires_disponibles" value="{{@book.exemplaires_disponibles}}" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="number" name="isbn" class="form-control" id="isbn" value="{{@book.isbn}}" required>
+    </div>
+     <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="file" name="image" class="form-control" id="image" value="{{$books->image}}" required>
+
+        <div class="pt-3">
+            @if($books -> image != '' && file_exists(public_path().'/images/books/'.$books -> image))
+                <img src="{{url('images/books/'.$books -> image)}}" alt="" width="80" height="100">
+            @endif
+        </div>
+
+    </div>
+
+    <div class="flex-end" >
+        <button type="submit" class="btn btn-primary mb-3 mx-3">Modifier</button>
+        <a href="{{route('list.books')}}" class="btn btn-outline-warning mb-3">Retour</a>
+    </div>
+
+</form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <% if @book.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+    </section>
+<% if @book.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,27 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+   <meta name="theme-color" content="#7952b3">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+    <!-- Bootstrap core CSS -->
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+
+<!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
   <title>Connexion à la Bibliothèque</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+
 </head>
-<body>
+<body class="text-center">
   <div class="container">
     <div class="login-box">
       <h2>Connexion à la Bibliothèque</h2>
-      <form id="login-form">
-        <div class="input-container">
-          <label for="username">Nom d'utilisateur</label>
-          <input type="text" id="username" name="username" required>
-        </div>
-        <div class="input-container">
-          <label for="password">Mot de passe</label>
-          <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Se connecter</button>
-      </form>
+      </div>
+      <main class="form-signin ">
+  <form>
+    <img class="mb-4" src="/app/assets/images/keefaniBooks.png" alt="logo KB" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
     </div>
-  </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">© 2023 - KeefaniBooks</p>
+  </form>
+</main>
+      </div>
+
+
+
+
+
+
+
+
   <script>
     const loginForm = document.getElementById('login-form');
 
@@ -29,7 +88,7 @@
       event.preventDefault();
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
-      
+
       // Envoyez les informations d'authentification au serveur Ruby ici
       // Vous devrez gérer la logique d'authentification côté serveur en Ruby
     });

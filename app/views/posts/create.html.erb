@@ -1,0 +1,13 @@
+<% if flash[:success].present? %>
+      <div class="alert alert-success alert-dismissible fade show">
+        <%= flash[:success] %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+      </div>
+    <% end %>
+
+    <% if flash[:error].present? %>
+      <div class="alert alert-danger alert-dismissible fade show">
+        <%= flash[:error] %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+      </div>
+    <% end %>

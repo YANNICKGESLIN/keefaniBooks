@@ -5,6 +5,7 @@ auteur TEXT,
 genre TEXT,
 annee_publication INTEGER,
 exemplaires_disponibles INTEGER
+isbn INTEGER
 );
 
 CREATE TABLE Membres (

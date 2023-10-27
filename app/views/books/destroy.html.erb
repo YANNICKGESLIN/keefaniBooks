@@ -1,0 +1,19 @@
+
+  <h1>Delete Book</h1>
+
+  <p>Are you sure you want to delete the book "<%= @book.titre %>"?</p>
+
+  <form action="/books/<%= @book.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Book">
+  </form>
+
+  <a href="<% root_path%>">Cancel</a>
+
+ <script>
+        function deletePatient(id) {
+            if(confirm('Etes vous sure de vouloir supprimer cette enregistrement ?')){
+                document.getElementById('delete-' + id).submit();
+            }
+        }
+    </script>

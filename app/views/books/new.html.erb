@@ -1,2 +1,104 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<%provide(:title, "new")%>
+<div class="container">
+      <h1 class="text-center mb-3 mt-2 justify-content bg-primary">Nouveau Livre</h1>
+    <%= form_for @book do |f| %>
+
+    <div class="mb-3 rounded-3">
+      <label for="exampleFormControlInput1" class="form-label">Titre du livre</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Titre d'un livre">
+    </div>
+
+    <div class="mb-3 rounded-3">
+      <label for="exampleFormControlInput1" class="form-label">Auteur du livre</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Auteur d'un livre">
+    </div>
+      <div class="mb-3 rounded-3">
+      <label for="exampleFormControlInput1" class="form-label">Genre du livre</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Genre d'un livre">
+    </div>
+    <div class="mb-3 rounded-3">
+      <label for="exampleFormControlInput1" class="form-label">Annee de publication du livre</label>
+      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Titre d'un livre">
+    </div>
+    <div class="mb-3 rounded-3">
+      <label for="exampleFormControlInput1" class="form-label">Exemplaires disponibles du livre</label>
+      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Titre d'un livre">
+    </div>
+      <div class="mb-3 rounded-3">
+      <label for="exampleFormControlInput1" class="form-label">Isbn du livre</label>
+      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Titre d'un livre">
+    </div>
+    <div class="mb-3 rounded-3">
+      <label for="formFile" class="form-label">Image</label>
+      <input class="form-control" type="file" id="formFile">
+    </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+</div>
+
+  <script>
+    // Fonction pour récupérer les données du formulaire
+    function getFormData() {
+      var formData = new FormData();
+
+      for (var i = 0; i < document.forms[0].elements.length; i++) {
+        var element = document.forms[0].elements[i];
+
+        // Vérifier si le champ est requis
+        if (element.required) {
+          if (element.value === "") {
+            alert("Le champ " + element.name + " est requis.");
+            return false;
+          }
+        }
+
+        // Ajouter la valeur du champ au formulaire
+        formData.append(element.name, element.value);
+      }
+
+      return formData;
+    }
+
+    // Fonction pour envoyer les données à la base de données
+    function sendData() {
+      var formData = getFormData();
+
+      // Vérifier si le formulaire est valide
+      if (formData === false) {
+        return;
+      }
+
+      // Créer une requête HTTP POST
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/books/new", true);
+
+      // Envoyer les données à la base de données
+      xhr.send(formData);
+
+      // Gérer la réponse de la base de données
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // Le livre a été ajouté avec succès
+          alert("Le livre a été ajouté avec succès.");
+        } else {
+          // Une erreur s'est produite
+          alert("Une erreur s'est produite lors de l'ajout du livre.");
+        }
+      };
+    }
+</script>
+
+<% if @book.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+

@@ -1,17 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  titre: MyString
+  id: 1
   auteur: MyString
   genre: MyString
   annee_publication: 1
   exemplaires_disponibles: 1
-  isbn: MyString
+  isbn: 1
+  image: 1
 
 two:
-  titre: MyString
+  id: 1
   auteur: MyString
   genre: MyString
   annee_publication: 1
   exemplaires_disponibles: 1
-  isbn: MyString
+  isbn: 1
+  image: 1

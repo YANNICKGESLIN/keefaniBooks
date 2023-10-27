@@ -7,3 +7,6 @@ class User < ActiveRecord::Base
 
 
 end
+
+# Ferme la base de données
+db.close

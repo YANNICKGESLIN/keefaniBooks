@@ -15,6 +15,15 @@ class Book < ApplicationRecord
    belongs_to :book
   belongs_to :membre
   has_many :emprunts
+
+    attr_accessor :title, :author, :genre
+
+  def initialize(titre, auteur, genre)
+    @title = titre
+    @author = auteur
+    @genre = genre
+  end
+
 end
 
  def to_s

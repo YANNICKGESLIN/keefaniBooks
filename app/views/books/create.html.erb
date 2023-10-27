@@ -1,2 +1,29 @@
 <h1>Books#create</h1>
 <p>Find me in app/views/books/create.html.erb</p>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styless.css">
+
+    <title>Livres</title>
+  </head>
+<body>
+  <div class="container">
+    <h1>Bibliothèque de Livres</h1>
+    <div class="book-form">
+      <input type="text" id="book-title" placeholder="Titre du livre">
+      <input type="text" id="book-author" placeholder="Auteur du livre">
+      <button id="add-book">Ajouter</button>
+    </div>
+    <div class="book-list">
+      <ul id="book-list">
+        <!-- La liste des livres sera générée ici -->
+      </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

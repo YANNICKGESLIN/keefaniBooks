@@ -27,3 +27,6 @@ membre = Membre.create(nom: 'Nom du Membre', email: 'email@example.com', passwor
 # Insère l'utilisateur dans la base de données
 db.execute('INSERT INTO Membres (nom, email, password) VALUES (?, ?, ?)', [membre[:nom], membre[:email], membre[:password]])
 membre_id = db.last_insert_row_id
+
+# Ferme la base de données
+db.close

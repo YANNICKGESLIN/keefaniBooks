@@ -25,3 +25,6 @@ emprunt = {
 
 # Insère l'emprunt dans la base de données
 db.execute('INSERT INTO Emprunts (book_id, membre_id, date_emprunt, date_retour_prevue) VALUES (?, ?, ?, ?)', [emprunt[:book_id], emprunt[:membre_id], emprunt[:date_emprunt], emprunt[:date_retour_prevue])
+
+# Ferme la base de données
+db.close

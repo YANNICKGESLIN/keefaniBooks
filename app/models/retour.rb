@@ -22,3 +22,5 @@ retour = {
 db.execute('INSERT INTO Retours (emprunt_id, date_retour) VALUES (?, ?)', [retour[:emprunt_id], retour[:date_retour]])
 
 
+# Ferme la base de données
+db.close

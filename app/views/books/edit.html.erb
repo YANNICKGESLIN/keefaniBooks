@@ -1,69 +1,52 @@
- <section id="about">
-        <div class="container">
+ <section>
+
 
             <div class="container my-5">
-                <div class="container my-5 row">
-                    <div class="col-md-4"></div>
+                <div class=" row">
+
                     <div class="col-md-6 card">
                         <h4 >Modification des données d'un nouveau Livre</h4>
 
+                          <%= form_for @book, method: :put, action: books_path(@book), enctype: "multipart/form-data" do |f| %>
+                          <div class="mb-3">
+                            <%= f.label :titre, class: "form-label" %>
+                            <%= f.text_field :titre, placeholder: "Titre" %>
+                            </div>
+                            <div class="mb-3">
+                              <%= f.label :auteur, class: "form-label" %>
+                            <%= f.text_field :auteur, placeholder: "Auteur" %>
+                            </div>
+                            <div class="mb-3">
+                              <%= f.label :genre, class: "form-label" %>
+                            <%= f.text_field :genre, placeholder: "Genre" %>
+                            </div>
+                            <div class="mb-3">
+                              <%= f.label :annee_publication, class: "form-label" %>
+                            <%= f.integer_field :annee_publication, placeholder: "Année de publication" %>
+                            </div>
+                            <div class="mb-3">
+                              <%= f.label :exemplaires_disponibles, class: "form-label" %>
+                            <%= f.integer_field :exemplaires_disponibles, placeholder: "Exemplaires disponibles" %>
+                            </div>
+                            <div class="mb-3">
+                              <%= f.label :isbn, class: "form-label" %>
+                            <%= f.integer_field :isbn, placeholder: "ISBN" %>
+                            </div>
+                            <div class="mb-3">
+                              <%= f.file_field :image, class: "form-control", id: "image" %>
+                              <%= f.label :image, class: "form-label" %>
+                            </div>
 
 
-
-<h1>Modifier un livre</h1>
-
-# views/books/edit.html.erb
-<%= form_for @book, method: :put, action: books_path(@book), enctype: "multipart/form-data" do |f| %>
- <div class="mb-3">
-  <%= f.label :titre, class: "form-label" %>
-  <%= f.text_field :titre, placeholder: "Titre" %>
-   </div>
-  <div class="mb-3">
-    <%= f.label :auteur, class: "form-label" %>
-  <%= f.text_field :auteur, placeholder: "Auteur" %>
-   </div>
-  <div class="mb-3">
-    <%= f.label :genre, class: "form-label" %>
-  <%= f.text_field :genre, placeholder: "Genre" %>
-   </div>
-  <div class="mb-3">
-    <%= f.label :annee_publication, class: "form-label" %>
-  <%= f.integer_field :annee_publication, placeholder: "Année de publication" %>
-   </div>
-  <div class="mb-3">
-    <%= f.label :exemplaires_disponibles, class: "form-label" %>
-  <%= f.integer_field :exemplaires_disponibles, placeholder: "Exemplaires disponibles" %>
-   </div>
-  <div class="mb-3">
-    <%= f.label :isbn, class: "form-label" %>
-  <%= f.integer_field :isbn, placeholder: "ISBN" %>
-   </div>
-  <div class="mb-3">
-    <%= f.file_field :image, class: "form-control", id: "image" %>
-    <%= f.label :image, class: "form-label" %>
-  </div>
-
-
-  <%= f.submit "Modifier", class: "btn btn-primary mb-3 mx-3" %>
-  <%= link_to "Retour", books_path, class: "btn btn-outline-warning mb-3" %>
-<% end %>
+                            <%= f.submit "Modifier", class: "btn btn-primary mb-3 mx-3" %>
+                            <%= link_to "Retour", books_path, class: "btn btn-outline-warning mb-3" %>
+                          <% end %>
 
 
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <% if @book.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+        </div>
 
     </section>
 

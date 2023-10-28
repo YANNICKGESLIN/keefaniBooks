@@ -1,22 +1,42 @@
-<!-- app/views/books/show.html.erb -->
+<div class="container">
+  <h1 class="text-center mb-3 mt-2 justify-content bg-primary">Details du Livre</h1>
+  <% if @book && @book.titre.presence %>
+    <%= form_for @book do |f| %>
+      <div class="mb-3">
+        <%= f.label :titre, class: "form-label" %>
+        <%= f.text_field :titre, placeholder: "Titre" %>
+      </div>
 
-<h1>Détails du Livre</h1>
+      <div class="mb-3">
+        <%= f.label :auteur, class: "form-label" %>
+        <%= f.text_field :auteur, placeholder: "Auteur" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :genre, class: "form-label" %>
+        <%= f.text_field :genre, placeholder: "Genre" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :annee_publication, class: "form-label" %>
+        <%= f.number_field :annee_publication, placeholder: "Année de publication" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :exemplaires_disponibles, class: "form-label" %>
+        <%= f.number_field :exemplaires_disponibles, placeholder: "Exemplaires disponibles" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :isbn, class: "form-label" %>
+        <%= f.number_field :isbn, placeholder: "ISBN" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :image, class: "form-label" %>
+        <%= f.file_field :image, class: "form-control", id: "image" %>
+      </div>
+      <div class="mb-3">
+        <button class="actions bg-primary">
+          <%= f.submit %>
+        </button>
+      </div>
 
-<div class="card">
-  <% if @book.image.presence %>
-  <%= image_tag @book.image, alt: "Image du livre", class: "card-img-top" %>
-<% end %>
-
-  <div class="card-body">
-    <h5 class="card-title"><strong>Titre :</strong> <%= @book.titre %></h5>
-    <p class="card-text"><strong>Auteur :</strong> <%= @book.auteur %></p>
-    <p class="card-text"><strong>Genre :</strong> <%= @book.genre %></p>
-    <p class="card-text"><strong>Année de Publication :</strong> <%= @book.annee_publication %></p>
-    <p class="card-text"><strong>Exemplaires Disponibles :</strong> <%= @book.exemplaires_disponibles %></p>
-    <p class="card-text"><strong>ISBN :</strong> <%= @book.isbn %></p>
-  </div>
+    <% end %>
+  <% end %>
 </div>
-
-<%= link_to 'Retour', books_path, class: 'btn btn-primary' %>
-
-

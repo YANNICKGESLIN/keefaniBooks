@@ -1,9 +1,9 @@
- <%provide(:title, "home")%>
+
  <section id="livres">
-        <h1>Liste des livres</h1>
+        <h1 class="mt-2 ">La Liste des livres</h1>
         <div class="container">
-            <div class="flex-end" >
-            <a href="/books/create" class="btn btn-sm btn-primary float-right">Nouveau</a>
+            <div class="text-end" >
+            <a href="/books/new" class="btn btn-sm btn-primary float-right">Nouveau</a>
             </div>
         </div>
 
@@ -28,14 +28,14 @@
                         <% @book&.each do |book| %>
                           <tr>
 
-                                <td><%= book.titre %></td>
-                                <td><%= book.auteur %></td>
-                                <td><%= book.genre %></td>
-                                <td><%= book.annee_publication %></td>
-                                <td><%= book.exemplaires_disponibles %></td>
-                                <td><%= book.isbn %></td>
+                                <td><%= book&.titre %></td>
+                                <td><%= book&.auteur %></td>
+                                <td><%= book&.genre %></td>
+                                <td><%= book&.annee_publication %></td>
+                                <td><%= book&.exemplaires_disponibles %></td>
+                                <td><%= book&.isbn %></td>
                                 <td class="text-center">
-                                     <%= image_tag(book.image, alt: "img", width: "40", height: "50", class: "rounded-circle") if book.image.present? && File.exist?("images/books/#{book.image}") %>
+                                     <%= image_tag(book&.image, alt: "img", width: "40", height: "50", class: "rounded-circle") if book&.image.present? && File.exist?("images/books/#{book&.image}") %>
 
 
                                 </td>
@@ -54,53 +54,6 @@
 
     </div>
 
-<script>
-    // Fonction pour récupérer les données du formulaire
-    function getFormData() {
-      var formData = new FormData();
 
-      for (var i = 0; i < document.forms[0].elements.length; i++) {
-        var element = document.forms[0].elements[i];
-
-        // Vérifier si le champ est requis
-        if (element.required) {
-          if (element.value === "") {
-            alert("Le champ " + element.name + " est requis.");
-            return false;
-          }
-        }
-
-        // Ajouter la valeur du champ au formulaire
-        formData.append(element.name, element.value);
-      }
-
-      return formData;
-    }
-
-    // Fonction pour envoyer les données à la base de données
-    function sendData() {
-  var formData = new FormData(document.forms[0]);
-
-  // Créer une requête HTTP POST
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/books", true);
-
-  // Envoyer les données à la base de données
-  xhr.send(formData);
-
-  // Gérer la réponse de la base de données
-  xhr.onload = function() {
-    if (xhr.status === 200) {
-      // Le livre a été ajouté avec succès
-      alert("Le livre a été ajouté avec succès.");
-    } else {
-      // Une erreur s'est produite
-      alert("Une erreur s'est produite lors de l'ajout du livre.");
-    }
-  };
-}
-
-</script>
-
-    </section><!-- #about -->
+    </section>
 

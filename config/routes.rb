@@ -16,20 +16,23 @@ Rails.application.routes.draw do
   get 'emprunts/delete_book'
   get 'emprunts/edit_book'
 
+  get 'books/new'
+  get 'books/create'
+  get 'books/update'
+  get 'books/show'
+  get 'books/destroy'
+  get 'books/edit'
 
-  resources :books, except: [:new, :edit] do
-  delete '/:id', to: 'books#destroy'
-end
 
 
-get 'home/index'
+get 'books/index'
 
   get 'retours/show'
   get 'retours/create'
   get 'retours/delete'
   get 'retours/update'
 
-  root "books#index"
+  root "home#index"
   get "show" => 'livres#show'
 
   get 'membres/show'

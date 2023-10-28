@@ -30,3 +30,40 @@ body {
   justify-content: center !important;
   align-items: center;
 }
+
+
+.container {
+  max-width: 960px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.table-dark {
+  color: #fff;
+  background-color: #343a40;
+}
+
+.table-striped>tbody>tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-responsive {
+  max-width: 100%;
+  overflow-y: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+@media (max-width: 576px) {
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 1rem;
+    overflow-y: visible;
+  }
+
+  .table-responsive>.table {
+    margin-bottom: 0;
+  }
+}

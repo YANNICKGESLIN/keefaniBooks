@@ -1,1 +1,47 @@
-update.html.erb
+<!-- /app/views/books/update.html.erb -->
+
+<%# Affiche un formulaire pour mettre à jour les informations d'un livre %>
+<h1>Modifier les informations du livre</h1>
+
+<%= form_for @book do |f| %>
+  <div class="form-group">
+    <%= f.label :titre, "Titre du livre" %>
+    <%= f.text_field :titre, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :auteur, "Auteur" %>
+    <%= f.text_field :auteur, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :genre, "Genre" %>
+    <%= f.text_field :genre, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :annee_publication, "Année de publication" %>
+    <%= f.number_field :annee_publication, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :exemplaires_disponibles, "Exemplaires disponibles" %>
+    <%= f.number_field :exemplaires_disponibles, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :isbn, "ISBN" %>
+    <%= f.number_field :isbn, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image, "Image" %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Mettre à jour", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour à la liste des livres', books_path, class: "btn btn-secondary" %>

@@ -1,5 +1,51 @@
 
-<%= render "books/form" %>
+<div class="container">
+  <h1 class="text-center mb-3 mt-2 justify-content bg-primary">Nouveau Livre</h1>
+  <%= form_for Book.new do |f| %>
+    <div class="mb-3">
+      <% if @book&.titre %>
+        <%= f.label :titre, class: "form-label" %>
+        <%= f.text_field :titre, placeholder: "Titre" %>
+      <% end %>
+    </div>
+    <div class="mb-3">
+      <% if @book&.auteur %>
+        <%= f.label :auteur, class: "form-label" %>
+        <%= f.text_field :auteur, placeholder: "Auteur" %>
+      <% end %>
+    </div>
+    <div class="mb-3">
+      <% if @book&.genre %>
+        <%= f.label :genre, class: "form-label" %>
+        <%= f.text_field :genre, placeholder: "Genre" %>
+      <% end %>
+    </div>
+    <div class="mb-3">
+      <% if @book&.annee_publication %>
+        <%= f.label :annee_publication, class: "form-label" %>
+        <%= f.number_field :annee_publication, placeholder: "Année de publication" %>
+      <% end %>
+    </div>
+    <div class="mb-3">
+      <% if @book&.exemplaires_disponibles %>
+        <%= f.label :exemplaires_disponibles, class: "form-label" %>
+        <%= f.number_field :exemplaires_disponibles, placeholder: "Exemplaires disponibles" %>
+      <% end %>
+    </div>
+    <div class="mb-3">
+      <% if @book&.isbn %>
+        <%= f.label :isbn, class: "form-label" %>
+        <%= f.number_field :isbn, placeholder: "ISBN" %>
+      <% end %>
+    </div>
+    <div class="mb-3">
+      <% if @book&.image %>
+        <%= f.label :image, class: "form-label" %>
+        <%= f.file_field :image, class: "form-control", id: "image" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
   <script>
     // Fonction pour récupérer les données du formulaire
@@ -49,14 +95,4 @@
 
 </script>
 
-<% if @book.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 

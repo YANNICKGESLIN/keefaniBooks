@@ -2,7 +2,6 @@ class BooksController < ApplicationController
    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
    rescue_from ActionController::RoutingError, with: :routing_error
 
-  before_action :find_book, only: [:show, :edit, :update, :destroy]
 end
 
   def index

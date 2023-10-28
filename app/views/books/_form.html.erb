@@ -1,0 +1,39 @@
+<div class="container">
+      <h1 class="text-center mb-3 mt-2 justify-content bg-primary">Nouveau Livre</h1>
+    <%= form_for @book do |f| %>
+
+       <div class="mb-3">
+  <%= f.label :titre, class: "form-label" %>
+  <%= f.text_field :titre, placeholder: "Titre" %>
+   </div>
+  <div class="mb-3">
+    <%= f.label :auteur, class: "form-label" %>
+  <%= f.text_field :auteur, placeholder: "Auteur" %>
+   </div>
+  <div class="mb-3">
+    <%= f.label :genre, class: "form-label" %>
+  <%= f.text_field :genre, placeholder: "Genre" %>
+   </div>
+  <div class="mb-3">
+    <%= f.label :annee_publication, class: "form-label" %>
+  <%= f.number_field :annee_publication, placeholder: "Année de publication" %>
+
+   </div>
+  <div class="mb-3">
+    <%= f.label :exemplaires_disponibles, class: "form-label" %>
+  <%= f.number_field :exemplaires_disponibles, placeholder: "Exemplaires disponibles" %>
+   </div>
+  <div class="mb-3">
+    <%= f.label :isbn, class: "form-label" %>
+  <%= f.number_field :isbn, placeholder: "ISBN" %>
+   </div>
+  <div class="mb-3">
+    <%= f.label :image, class: "form-label" %>
+    <%= f.file_field :image, class: "form-control", id: "image" %>
+
+  </div>
+        Action<button class="actions bg-primary">
+          <%= f.submit %>
+        </button>
+    <% end %>
+</div>

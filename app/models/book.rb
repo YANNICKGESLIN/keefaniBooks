@@ -3,6 +3,7 @@ require 'sqlite3'
 
 class Book < ApplicationRecord
   # Définition des attributs du modèle
+  # attr_accessible :titre, :auteur, :genre
   validates :titre, presence: true
 
   validates :auteur, presence: true
@@ -10,11 +11,12 @@ class Book < ApplicationRecord
   validates :annee_publication, presence: true
   validates :exemplaires_disponibles, presence: true
   validates :isbn, presence: true
-   validates :image, presence: true
+  validates :image, presence: true
+has_one_attached :image
 
-    def image
-      # Define how to retrieve the image here
-    end
+  def image_url
+    Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true)
+  end
 
  def to_s
     "#{titre} par #{auteur}"
@@ -41,7 +43,7 @@ class Book < ApplicationRecord
 
 
 # # Ouvre la base de données
-# db = SQLite3::Database.new('biblio.sqlite3')
+ db = SQLite3::Database.new('biblio.sqlite3')
 
 # Crée un livre
 # book = {
@@ -53,9 +55,9 @@ class Book < ApplicationRecord
 #   isbn: 0
 # }
 
-# Crée un nouveau livre
-# book = Book.create(titre: "", auteur: "", genre: "", annee_publication: "",
-#   exemplaires_disponibles:"", isbn: "")
+#Crée un nouveau livre
+book = Book.create(titre: "", auteur: "", genre: "", annee_publication: "",
+  exemplaires_disponibles:"", isbn: "", image:"")
 
 # Renvoie un livre par son ID
 if Book.exists?(1)
@@ -76,32 +78,6 @@ end
 # Renvoie une liste de tous les livres
 books = Book.all
 
-# Met à jour un livre existant
-# if Book.exists?(1)
-#   book = Book.find(1)
-#   book.titre = "Le nouveau titre du livre"
-#   book.save
-# else
-#   # Le livre n'existe pas
-# end
-
-# book = Book.find(1) rescue nil
-
-# if book
-#   book.titre = "Le nouveau titre du livre"
-#   book.save
-# else
-#   # Le livre n'existe pas
-# end
-
-if Book.exists?(1)
-  book = Book.find(1)
-  book.titre = "Le nouveau titre du livre"
-  book.save
-else
-  # Le livre n'existe pas
-  # Afficher un message d'erreur ou rediriger l'utilisateur vers une page appropriée
-end
 
 
 # Supprime un livre existant

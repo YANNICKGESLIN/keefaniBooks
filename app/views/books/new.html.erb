@@ -1,43 +1,5 @@
-<%provide(:title, "new")%>
-<div class="container">
-      <h1 class="text-center mb-3 mt-2 justify-content bg-primary">Nouveau Livre</h1>
-    <%= form_for @book do |f| %>
 
-    <div class="mb-3 rounded-3">
-      <label for="exampleFormControlInput1" class="form-label">Titre du livre</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Titre d'un livre">
-    </div>
-
-    <div class="mb-3 rounded-3">
-      <label for="exampleFormControlInput1" class="form-label">Auteur du livre</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Auteur d'un livre">
-    </div>
-      <div class="mb-3 rounded-3">
-      <label for="exampleFormControlInput1" class="form-label">Genre du livre</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Genre d'un livre">
-    </div>
-    <div class="mb-3 rounded-3">
-      <label for="exampleFormControlInput1" class="form-label">Annee de publication du livre</label>
-      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Titre d'un livre">
-    </div>
-    <div class="mb-3 rounded-3">
-      <label for="exampleFormControlInput1" class="form-label">Exemplaires disponibles du livre</label>
-      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Titre d'un livre">
-    </div>
-      <div class="mb-3 rounded-3">
-      <label for="exampleFormControlInput1" class="form-label">Isbn du livre</label>
-      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Titre d'un livre">
-    </div>
-    <div class="mb-3 rounded-3">
-      <label for="formFile" class="form-label">Image</label>
-      <input class="form-control" type="file" id="formFile">
-    </div>
-
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-    <% end %>
-</div>
+<%= render "books/form" %>
 
   <script>
     // Fonction pour récupérer les données du formulaire
@@ -64,31 +26,27 @@
 
     // Fonction pour envoyer les données à la base de données
     function sendData() {
-      var formData = getFormData();
+  var formData = new FormData(document.forms[0]);
 
-      // Vérifier si le formulaire est valide
-      if (formData === false) {
-        return;
-      }
+  // Créer une requête HTTP POST
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/books", true);
 
-      // Créer une requête HTTP POST
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/books/new", true);
+  // Envoyer les données à la base de données
+  xhr.send(formData);
 
-      // Envoyer les données à la base de données
-      xhr.send(formData);
-
-      // Gérer la réponse de la base de données
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          // Le livre a été ajouté avec succès
-          alert("Le livre a été ajouté avec succès.");
-        } else {
-          // Une erreur s'est produite
-          alert("Une erreur s'est produite lors de l'ajout du livre.");
-        }
-      };
+  // Gérer la réponse de la base de données
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // Le livre a été ajouté avec succès
+      alert("Le livre a été ajouté avec succès.");
+    } else {
+      // Une erreur s'est produite
+      alert("Une erreur s'est produite lors de l'ajout du livre.");
     }
+  };
+}
+
 </script>
 
 <% if @book.errors.any? %>

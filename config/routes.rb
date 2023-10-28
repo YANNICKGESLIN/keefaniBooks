@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :posts
   devise_for :users
+  resources :posts
+  resources :books
+
+  devise_for :membres
   get 'posts/create'
   get 'show/new'
   get 'show/create'
@@ -13,14 +16,11 @@ Rails.application.routes.draw do
   get 'emprunts/delete_book'
   get 'emprunts/edit_book'
 
-  get 'books/index'
-  get 'books/show'
-  get 'books/new'
-  get 'books/create'
-  get 'books/edit'
-  get 'books/update'
-  get 'books/destroy'
-  resources :books
+
+  resources :books, except: [:new, :edit] do
+  delete '/:id', to: 'books#destroy'
+end
+
 
 get 'home/index'
 
@@ -29,7 +29,7 @@ get 'home/index'
   get 'retours/delete'
   get 'retours/update'
 
-  root "home#index"
+  root "books#index"
   get "show" => 'livres#show'
 
   get 'membres/show'

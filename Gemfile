@@ -73,3 +73,6 @@ end
 gem 'webpacker'
 gem 'sassc-rails'
 gem 'sassc'
+# Gemfile
+
+

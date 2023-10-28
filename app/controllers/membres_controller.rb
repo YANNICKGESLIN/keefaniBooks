@@ -6,4 +6,10 @@ MessageMailer.send_message('destinataire@example.com', 'Contenu du message').del
   def index
 
   end
+  def new
+
+  end
+  def update
+
+  end
 end

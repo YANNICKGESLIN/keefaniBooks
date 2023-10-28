@@ -14,18 +14,22 @@ end
 # Ouvre la base de données
 db = SQLite3::Database.new('biblio.sqlite3')
 
-# Crée un membre
-membre = {
-  nom: 'Nom du membre',
-  email: 'email@example.com',
-  password: 'motdepasse'
+membre= {
+  nom: 'Nom du Membre',
+  email: 'membre@example.com',
+  password: 'mot_de_passe'
 }
 
-# Utilise une requête préparée pour insérer le membre dans la table
-db.execute('INSERT INTO membres (nom, email, password) VALUES (?, ?, ?)', [membre[:nom], membre[:email], membre[:password]])
+#db.transaction do
+  # Insère le nouveau membre
+  #db.execute('INSERT INTO membres (nom, email, password, date_inscription) VALUES (?, ?, ?,?)', [membre[:nom], membre[:email], membre[:password], membre[:date_inscription]])
 
-# Récupère l'ID du membre créé
-membre_id = db.last_insert_row_id
+  # Récupère l'ID du membre créé
+ # membre_id = db.last_insert_row_id
+
+  # Termine la transaction en validant les modifications
+  #db.commit
 
 # Ferme la base de données
-db.close
+#db.close
+

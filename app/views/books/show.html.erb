@@ -1,12 +1,22 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
-<% if @book.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+<!-- app/views/books/show.html.erb -->
+
+<h1>Détails du Livre</h1>
+
+<div class="card">
+  <% if @book.image.presence %>
+  <%= image_tag @book.image, alt: "Image du livre", class: "card-img-top" %>
 <% end %>
+
+  <div class="card-body">
+    <h5 class="card-title"><strong>Titre :</strong> <%= @book.titre %></h5>
+    <p class="card-text"><strong>Auteur :</strong> <%= @book.auteur %></p>
+    <p class="card-text"><strong>Genre :</strong> <%= @book.genre %></p>
+    <p class="card-text"><strong>Année de Publication :</strong> <%= @book.annee_publication %></p>
+    <p class="card-text"><strong>Exemplaires Disponibles :</strong> <%= @book.exemplaires_disponibles %></p>
+    <p class="card-text"><strong>ISBN :</strong> <%= @book.isbn %></p>
+  </div>
+</div>
+
+<%= link_to 'Retour', books_path, class: 'btn btn-primary' %>
+
+

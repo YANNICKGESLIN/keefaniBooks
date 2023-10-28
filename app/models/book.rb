@@ -8,9 +8,9 @@ class Book < ApplicationRecord
 
   validates :auteur, presence: true
   validates :genre, presence: true
-  validates :annee_publication, presence: true
-  validates :exemplaires_disponibles, presence: true
-  validates :isbn, presence: true
+  validates :annee_publication, numericality: { only_integer: true }
+  validates :exemplaires_disponibles, numericality: { only_integer: true }
+  validates :isbn, numericality: { only_integer: true }
   validates :image, presence: true
 has_one_attached :image
 
@@ -46,43 +46,15 @@ has_one_attached :image
  db = SQLite3::Database.new('biblio.sqlite3')
 
 # Crée un livre
-# book = {
-#   titre: '',
-#   auteur: '',
-#   genre: '',
-#   annee_publication: 0,
-#   exemplaires_disponibles: 0,
-#   isbn: 0
-# }
+ book = {
+   titre: 'moi-meme',
+   auteur: 'yannick',
+   genre: 'roman',
+   annee_publication: 2000,
+   exemplaires_disponibles: 20,
+   isbn: 345678765
+ }
 
-#Crée un nouveau livre
-book = Book.create(titre: "", auteur: "", genre: "", annee_publication: "",
-  exemplaires_disponibles:"", isbn: "", image:"")
-
-# Renvoie un livre par son ID
-if Book.exists?(1)
-  book = Book.find(1)
-else
-  # Le livre n'existe pas
-end
-
-# book = Book.find(1) rescue nil
-
-# if book
-#   # Le livre existe
-# else
-#   # Le livre n'existe pas
-# end
-
-
-# Renvoie une liste de tous les livres
-books = Book.all
-
-
-
-# Supprime un livre existant
-# book = Book.find(1)
-# book.destroy
 
 # Utilise une requête préparée pour insérer le livre dans la table
 def new
@@ -103,7 +75,7 @@ def new
 end
 
 
-# book_id = db.last_insert_row_id
+book_id = db.last_insert_row_id
 
 # # Ferme la base de données
 # db.close
